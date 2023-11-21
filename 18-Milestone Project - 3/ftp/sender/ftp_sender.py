@@ -22,12 +22,12 @@ class Receiver:
     def __init__(self, client_socket):
         self.client_socket = client_socket
 
-    def send(self, message) -> bool:
+    def send_bytes(self, message: bytes):
         """
         :return: Whether the message was successfully sent
         """
 
-        message = message.encode("utf-8")
+        message = message
         header_info = f"{len(message):<{HEADERSIZE}}".encode("utf-8")
 
         try:
@@ -37,6 +37,9 @@ class Receiver:
 
         except (ConnectionResetError, ConnectionAbortedError):
             return False
+
+    def send(self, message: str) -> bool:
+        return self.send_bytes(message.encode("utf-8"))
 
     def receive(self) -> str | None:
         """
@@ -119,8 +122,8 @@ def main():
 
     print("Receiver accepted the file transfer.")
     print("\nSending...")
-    with open(file_to_send, "r") as f:
-        receiver.send(f.read())
+    with open(file_to_send, "rb") as f:
+        receiver.send_bytes(f.read())
     print("File sent!")
 
 

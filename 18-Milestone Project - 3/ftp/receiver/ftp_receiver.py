@@ -26,9 +26,9 @@ class Sender:
             print("Sender disconnected")
             return False
 
-    def receive(self) -> str | None:
+    def receive_bytes(self) -> bytes | None:
         """
-        :return: The message if it was received, otherwise None
+        :return: The bytes message if it was received, otherwise None
         """
 
         try:
@@ -40,11 +40,23 @@ class Sender:
 
             message_length = int(header.decode('utf-8').strip())
 
-            return self.client_socket.recv(message_length).decode("utf-8")
+            return self.client_socket.recv(message_length)
 
         except (ConnectionResetError, ConnectionAbortedError):
             print("Sender disconnected")
             return None
+
+    def receive(self) -> str | None:
+        """
+        :return: The message if it was received, otherwise None
+        """
+
+        message = self.receive_bytes()
+
+        if type(message) == bytes:
+            message = message.decode("utf-8")
+
+        return message
 
 def setup_client_socket(ip) -> socket.socket:
     client_socket: socket.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -62,6 +74,7 @@ def main():
     sender = Sender(client_socket)
 
     accepted_or_rejected = sender.receive()
+    print(accepted_or_rejected)
     if accepted_or_rejected != "accept":
         print("Sender rejected the connection. Exiting.")
         return
@@ -77,6 +90,7 @@ def main():
 
     print(f"\nThe sender wants to send you a file:\n - Filename: {filename}\n - Size: {filesize} bytes.")
     accepted = input("Do you want to accept? (y/n): ").lower() == "y"
+
     sender.send("y" if accepted else "n")
 
     if not accepted:
@@ -85,7 +99,7 @@ def main():
         return
 
     print("\nReceiving file...")
-    file_contents = sender.receive()
+    file_contents = sender.receive_bytes()
     print("Received file!")
 
     if file_contents is None:
@@ -93,7 +107,7 @@ def main():
         return
 
     print("Writing file...")
-    with open(filename, "w") as f:
+    with open(filename, "wb") as f:
         f.write(file_contents)
     print(f"Wrote file successfully at {filename}!")
 
