@@ -1,3 +1,16 @@
+"""
+-- FTP Program --
+Transfer files from one computer to another!
+
+This file is intended to receive a file from a sender.
+
+WARNING: this program has several security vulernabilities. Do not use it for anything serious:
+- The file size that is said may not reflect the actual file size of the data being sent if the FTP sender file has malicious modifications.
+- Excessive file sizes may slow down computers with low memory
+- The file may overwrite another file on the receiver's computer with the same filename
+- Probably more that I'm unaware of
+"""
+
 import socket
 
 HEADERSIZE = 10
