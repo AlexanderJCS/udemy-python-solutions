@@ -89,7 +89,7 @@ def main():
         client_socket, addr = server_socket.accept()
         receiver = Receiver(client_socket)
 
-        print(f"Accepted socket connection with IP address {addr[0]}")
+        print(f"\nAccepted socket connection with IP address {addr[0]}")
         send_file = input("Do you want to send the file to this IP? (y/n): ")
 
         if send_file == "y":
@@ -97,17 +97,17 @@ def main():
             break
 
         receiver.send("reject")
-        print("Continuing to search for connections...")
+        print("\nContinuing to search for connections...")
 
     if not receiver.send(os.path.basename(file_to_send)):
-        print("Client unexpectedly disconnected. Exiting program.")
+        print("\nClient unexpectedly disconnected. Exiting program.")
         return
 
     if not receiver.send(str(file_size)):
-        print("Client unexpectedly disconnected. Exiting program.")
+        print("\nClient unexpectedly disconnected. Exiting program.")
         return
 
-    print("Waiting for receiver's approval...")
+    print("\nWaiting for receiver's approval...")
 
     accept = receiver.receive()
 
@@ -117,7 +117,8 @@ def main():
         client_socket.close()
         return
 
-    print("Receiver accepted the file transfer. Sending...")
+    print("Receiver accepted the file transfer.")
+    print("\nSending...")
     with open(file_to_send, "r") as f:
         receiver.send(f.read())
     print("File sent!")

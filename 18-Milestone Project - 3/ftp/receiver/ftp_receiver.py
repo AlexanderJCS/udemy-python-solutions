@@ -84,7 +84,7 @@ def main():
         client_socket.close()
         return
 
-    print("Receiving file...")
+    print("\nReceiving file...")
     file_contents = sender.receive()
     print("Received file!")
 
