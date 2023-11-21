@@ -35,7 +35,7 @@ class Receiver:
             self.client_socket.send(message)
             return True
 
-        except ConnectionResetError:
+        except (ConnectionResetError, ConnectionAbortedError):
             return False
 
     def receive(self) -> str | None:
@@ -84,17 +84,20 @@ def main():
     file_size = os.path.getsize(file_to_send)
 
     server_socket: socket.socket = setup_server_socket()
-    client_socket, addr = server_socket.accept()
 
     while True:
-        print(f"Accepted socket connection with IP address {addr}")
+        client_socket, addr = server_socket.accept()
+        receiver = Receiver(client_socket)
+
+        print(f"Accepted socket connection with IP address {addr[0]}")
         send_file = input("Do you want to send the file to this IP? (y/n): ")
 
         if send_file == "y":
+            receiver.send("accept")
             break
-        print("Continuing to search for connections...")
 
-    receiver = Receiver(client_socket)
+        receiver.send("reject")
+        print("Continuing to search for connections...")
 
     if not receiver.send(os.path.basename(file_to_send)):
         print("Client unexpectedly disconnected. Exiting program.")

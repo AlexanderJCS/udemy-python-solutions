@@ -59,16 +59,23 @@ def main():
     client_socket: socket.socket = setup_client_socket(ip)
 
     print("Connected. Waiting for sender's approval...")
-
     sender = Sender(client_socket)
-    filename = sender.receive()
-    filesize = sender.receive()
 
-    if filename is None or filesize is None:
-        print("The sender disconnected. Exiting program.")
+    accepted_or_rejected = sender.receive()
+    if accepted_or_rejected != "accept":
+        print("Sender rejected the connection. Exiting.")
         return
 
-    print(f"The sender wants to send you a file titled {filename}. Its size is {filesize} bytes.")
+    print("Receiving file metadata...")
+    filename = sender.receive()
+    filesize = sender.receive()
+    print("Received metadata!")
+
+    if filesize is None or filename is None:
+        print("The sender unexpectedly disconnected. Exiting program.")
+        return
+
+    print(f"\nThe sender wants to send you a file:\n - Filename: {filename}\n - Size: {filesize} bytes.")
     accepted = input("Do you want to accept? (y/n): ").lower() == "y"
     sender.send("y" if accepted else "n")
 
@@ -77,14 +84,18 @@ def main():
         client_socket.close()
         return
 
+    print("Receiving file...")
     file_contents = sender.receive()
+    print("Received file!")
 
     if file_contents is None:
         print("Sender unexpectedly disconnected. Exiting program.")
         return
 
+    print("Writing file...")
     with open(filename, "w") as f:
         f.write(file_contents)
+    print(f"Wrote file successfully at {filename}!")
 
 
 if __name__ == "__main__":
