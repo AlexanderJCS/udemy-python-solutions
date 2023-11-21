@@ -1,11 +1,9 @@
 # Udemy Python 3 Bootcamp
-A hard fork of the Udemy Python 3 Bootcamp repository.
-
-These are my solutions to the homework assignments for the Udemy Python 3 Bootcamp.
-
-You can see links to my solutions below.
+These are my solutions to the homework assignments for the Udemy Python 3 Bootcamp.  Instead of navigating the files structure of this repository, you can see direct links to my solutions below.
 
 Note: files titled "solutions" are the solutions provided by Udemy; I did not write them.
+
+I completed the Udemy course on 11/20/2023.
 
 ## Direct Links to Solutions
 You can find direct links to my solutions here:
