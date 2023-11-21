@@ -8,7 +8,7 @@ I completed the Udemy course on 11/20/2023.
 ## Direct Links to Solutions
 You can find direct links to my solutions here:
 - [00 - Data Structures Basics Test](00-Python%20Object%20and%20Data%20Structure%20Basics/09-Objects%20and%20Data%20Structures%20Assessment%20Test.ipynb)
-- 01 - Python Comparison Operators: Homework is provided via Udemy - not hosted on GitHub
+- 01 - Python Comparison Operators: Homework is provided via Udemy's website - not hosted on GitHub
 - [02 - Python Statements Test](02-Python%20Statements/07-Statements%20Assessment%20Test.ipynb)
 - [02 - Python Statements Guessing Game Challenge](02-Python%20Statements/09-Guessing%20Game%20Challenge.ipynb)
 - [03 - Methods and Functions Homework](03-Methods%20and%20Functions/08-Functions%20and%20Methods%20Homework.ipynb)
