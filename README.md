@@ -14,12 +14,12 @@ You can find direct links to my solutions here:
 - [02 - Python Statements Test](02-Python%20Statements/07-Statements%20Assessment%20Test.ipynb)
 - [02 - Python Statements Guessing Game Challenge](02-Python%20Statements/09-Guessing%20Game%20Challenge.ipynb)
 - [03 - Methods and Functions Homework](03-Methods%20and%20Functions/08-Functions%20and%20Methods%20Homework.ipynb)
-- [04 - Milestone Project 1 (Tic Tac Toe)](04-Milestone%20Project%20-%201/02-Milestone%20Project%201%20-%20Walkthrough%20Steps%20Workbook.ipynb)
+- [**_04 - Milestone Project 1 (Tic Tac Toe)_**](04-Milestone%20Project%20-%201/02-Milestone%20Project%201%20-%20Walkthrough%20Steps%20Workbook.ipynb)
 - [05 - OOP Homework](05-Object%20Oriented%20Programming/02-Object%20Oriented%20Programming%20Homework.ipynb)
 - [05 - OOP Challenge](05-Object%20Oriented%20Programming/04-OOP%20Challenge.ipynb)
 - 06 - Modules and Packages: No homework
 - [07 - Erros and Exceptions Homework](07-Errors%20and%20Exception%20Handling/02-Errors%20and%20Exceptions%20Homework.ipynb)
-- [08 - Milestone Project 2 (Blackjack)](08-Milestone%20Project%20-%202/blackjack/blackjack.py)
+- [**_08 - Milestone Project 2 (Blackjack)_**](08-Milestone%20Project%20-%202/blackjack/blackjack.py)
 - 09 - No Homework
 - 10 - No Homework Notebook
 - [11 - Generators Homework](11-Python%20Generators/02-Iterators%20and%20Generators%20Homework.ipynb)
@@ -29,4 +29,4 @@ You can find direct links to my solutions here:
 - [15 - PDF and CSVs Puzzle](15-PDFs-and-Spreadsheets/02-PDFs-Spreadsheets-Puzzle.ipynb)
 - [16 - Email Project](16-Emailing-with-Python/mail_client.py)
 - 17 - Advanced Data Structures: No Homework
-- [18 - Milestone Project 3 (FTP program)](18-Milestone%20Project%20-%203/ftp)
+- [**_18 - Milestone Project 3 (FTP program)_**](18-Milestone%20Project%20-%203/ftp)
